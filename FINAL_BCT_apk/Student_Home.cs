@@ -8,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace FINAL_BCT_apk
 {
     public partial class Student_Home : Form
     {
+        //GET AND SET VALUES FROM DATABASE
+        public string Name { get; set; }
+
         //COLOR VARIABLE (RED)
         private readonly Color textColor = ColorTranslator.FromHtml("#ECE1D5");
 
@@ -22,6 +26,14 @@ namespace FINAL_BCT_apk
         public Student_Home()
         {
             InitializeComponent();
+        }
+
+        //CIRCULAR BUTTON METHOD
+        private void MakeButtonCircular(Button btn)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddEllipse(0, 0, btn.Width, btn.Height);
+            btn.Region = new Region(path);
         }
 
         //FORM LOAD
@@ -38,6 +50,16 @@ namespace FINAL_BCT_apk
             path.CloseFigure();
             this.Region = new Region(path);
 
+            //SET NAME FROM DATABASE
+            userName_label.Text = $"Welcome back, {Name}";
+            userName_label.ForeColor = ColorTranslator.FromHtml("#9A1E22");
+
+
+            //CIRCULAR BUTTON
+            MakeButtonCircular(profilePic_btn);
+            
+
+
             //MENU TEXT COLORS
             menuLabel.ForeColor = textColor;
             home_btn.ForeColor = textColor;
@@ -47,13 +69,30 @@ namespace FINAL_BCT_apk
             grade_btn.ForeColor = textColor;
             billing_btn.ForeColor = textColor;
             logout_btn.ForeColor = textColor;
+
+            //HOME PANEL BUTTON COLORS
+            bctLabel.ForeColor = textColor;
+            home_News_btn.ForeColor = textColor;
+            home_About_btn.ForeColor = textColor;
+            home_Location_btn.ForeColor = textColor;
+            home_Announcement_btn.ForeColor = textColor;
+
+
             //AVOID FICKERING WHILE SLIDING THE MENU
             SetDoubleBuffered(sideBar_container);
+
             //SLIDEBAR COLOR
             sideBar_container.BackColor = ColorTranslator.FromHtml("#9A1E22");
             menuButton_panel.BackColor = ColorTranslator.FromHtml("#7B181B");
-            //HOME PANEL COLOR
+
+            //PANEL COLORS
+            profile_background_panel.BackColor = ColorTranslator.FromHtml("#9A1E22");
+            main_sidePanel.BackColor = ColorTranslator.FromHtml("#B32428");
+            search_panel.BackColor = ColorTranslator.FromHtml("#7B181B");
             Main_Container.BackColor = ColorTranslator.FromHtml("#ECE1D5");
+            home_panel.BackColor = ColorTranslator.FromHtml("#FCF7F8");
+
+            
         }
 
         //AVOID FICKERING WHILE SLIDING THE MENU
@@ -110,6 +149,7 @@ namespace FINAL_BCT_apk
             this.Hide();
             loginForm.Show();
         }
+
         private void home_btn_Click(object sender, EventArgs e)
         {
             CollapseSidebar();

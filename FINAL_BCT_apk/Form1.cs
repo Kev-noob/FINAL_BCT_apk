@@ -182,7 +182,7 @@ namespace FINAL_BCT_apk
                 using (MySqlConnection conn = GetConnection())
                 {
                     conn.Open();
-                    string sql = "SELECT student_id, full_name FROM inputs WHERE student_id=@student_id AND password=@password";
+                    string sql = "SELECT student_id, full_name, password FROM inputs WHERE student_id=@student_id AND password=@password";
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@student_id", studentId);
@@ -198,6 +198,7 @@ namespace FINAL_BCT_apk
 
                                 //GO TO HOME SCREEN
                                 Student_Home loginForm = new Student_Home();
+                                loginForm.Name = name;
                                 this.Hide();
                                 loginForm.Show();
                             }

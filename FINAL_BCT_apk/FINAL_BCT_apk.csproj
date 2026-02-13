@@ -262,5 +262,17 @@
   <ItemGroup>
     <None Include="Resources\white menu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profileSAMPLE.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profielBGsample.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
