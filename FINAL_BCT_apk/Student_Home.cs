@@ -139,9 +139,6 @@ namespace FINAL_BCT_apk
             sideBar_container.BringToFront();
             sidebarTimer.Start();
         }
-
-
-        //BUTTONS IN THE MENU SLIDEBAR
         private void button5_Click(object sender, EventArgs e)
         {
             //GO BACK TO LOGIN FORM
