@@ -76,7 +76,7 @@
             this.login_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.login_panel.Location = new System.Drawing.Point(0, 0);
             this.login_panel.Name = "login_panel";
-            this.login_panel.Size = new System.Drawing.Size(884, 561);
+            this.login_panel.Size = new System.Drawing.Size(900, 600);
             this.login_panel.TabIndex = 0;
             this.login_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.login_panel_Paint);
             // 
@@ -228,7 +228,7 @@
             this.register_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.register_panel.Location = new System.Drawing.Point(0, 0);
             this.register_panel.Name = "register_panel";
-            this.register_panel.Size = new System.Drawing.Size(884, 561);
+            this.register_panel.Size = new System.Drawing.Size(900, 600);
             this.register_panel.TabIndex = 0;
             // 
             // panel3
@@ -493,7 +493,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(900, 600);
             this.Controls.Add(this.login_panel);
             this.Controls.Add(this.register_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

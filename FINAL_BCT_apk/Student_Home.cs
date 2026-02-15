@@ -19,6 +19,7 @@ namespace FINAL_BCT_apk
 
         //COLOR VARIABLE (RED)
         private readonly Color textColor = ColorTranslator.FromHtml("#ECE1D5");
+        private readonly Color textColor_2 = ColorTranslator.FromHtml("#9A1E22");
 
         //BOOLEAN FOR MENU SLIDEBAR
         bool sidebarExpand;
@@ -71,11 +72,11 @@ namespace FINAL_BCT_apk
             logout_btn.ForeColor = textColor;
 
             //HOME PANEL BUTTON COLORS
-            bctLabel.ForeColor = textColor;
-            home_News_btn.ForeColor = textColor;
-            home_About_btn.ForeColor = textColor;
-            home_Location_btn.ForeColor = textColor;
-            home_Announcement_btn.ForeColor = textColor;
+            home_News_btn.ForeColor = textColor_2;
+            home_About_btn.ForeColor = textColor_2;
+            home_Location_btn.ForeColor = textColor_2;
+            home_Announcement_btn.ForeColor = textColor_2;
+            Home_label.ForeColor = textColor_2;
 
 
             //AVOID FICKERING WHILE SLIDING THE MENU
@@ -86,11 +87,8 @@ namespace FINAL_BCT_apk
             menuButton_panel.BackColor = ColorTranslator.FromHtml("#7B181B");
 
             //PANEL COLORS
-            profile_background_panel.BackColor = ColorTranslator.FromHtml("#9A1E22");
-            main_sidePanel.BackColor = ColorTranslator.FromHtml("#B32428");
-            search_panel.BackColor = ColorTranslator.FromHtml("#7B181B");
-            Main_Container.BackColor = ColorTranslator.FromHtml("#ECE1D5");
-            home_panel.BackColor = ColorTranslator.FromHtml("#FCF7F8");
+            main_sidePanel.BackColor = ColorTranslator.FromHtml("#E5DEDB");
+            home_panel.BackColor = ColorTranslator.FromHtml("#F2F1EB");
 
             
         }
@@ -134,6 +132,11 @@ namespace FINAL_BCT_apk
             sidebarExpand = true;
             sidebarTimer.Start();
         }
+
+
+
+
+        //BUTTONS IN THE MENU SLIDEBAR
         private void menu_btn_Click(object sender, EventArgs e)
         {
             sideBar_container.BringToFront();
@@ -147,29 +150,46 @@ namespace FINAL_BCT_apk
             loginForm.Show();
         }
 
-        private void home_btn_Click(object sender, EventArgs e)
+        private async void home_btn_Click(object sender, EventArgs e)
         {
             CollapseSidebar();
+            await Task.Delay(150);
+            home_panel.BringToFront();
         }
-        private void profile_btn_Click(object sender, EventArgs e)
+        private async void profile_btn_Click(object sender, EventArgs e)
         {
             CollapseSidebar();
+            await Task.Delay(150);
+            Profile_panel.BringToFront();
+
         }
-        private void enroll_btn_Click(object sender, EventArgs e)
+        private async void enroll_btn_Click(object sender, EventArgs e)
         {
             CollapseSidebar();
+            await Task.Delay(150);
+            Enroll_panel.BringToFront();
         }
-        private void course_btn_Click(object sender, EventArgs e)
+        private async void course_btn_Click(object sender, EventArgs e)
         {
             CollapseSidebar();
+            await Task.Delay(150);
+            Courses_panel.BringToFront();
         }
-        private void grade_btn_Click(object sender, EventArgs e)
+        private async void grade_btn_Click(object sender, EventArgs e)
         {
             CollapseSidebar();
+            await Task.Delay(150);
+            Grades_panel.BringToFront();
         }
-        private void billing_btn_Click(object sender, EventArgs e)
+        private async void billing_btn_Click(object sender, EventArgs e)
         {
             CollapseSidebar();
+            await Task.Delay(150);
+            Billing_panel.BringToFront();
         }
+
+     
+
+       
     }
 }
