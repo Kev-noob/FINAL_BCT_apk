@@ -67,7 +67,43 @@ namespace FINAL_BCT_apk
             RoundButton(btn_login, 5);
             RoundButton(btn_reg, 5);
 
+            //COMBOBOX COURSE ITEMS
+            LoadCourses();
+        }
 
+
+        //LOAD COURSES (FROM SUPER ADMIN) TO COMBOBOX (STUDENT REGISTER)
+        private void LoadCourses()
+        {
+            try
+            {
+                using (MySqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+                    string sql = "SELECT id, course_name FROM courses ORDER BY course_name";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+
+                        courses_comboBox.DataSource = dt;
+                        courses_comboBox.DisplayMember = "course_name";  // What user sees
+                        courses_comboBox.ValueMember = "id";             // What gets saved
+
+                        // Add default option
+                        DataRow row = dt.NewRow();
+                        row["id"] = 0;
+                        row["course_name"] = "-- Select Course --";
+                        dt.Rows.InsertAt(row, 0);
+                        courses_comboBox.SelectedIndex = 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading courses: " + ex.Message);
+            }
         }
 
 
@@ -282,22 +318,6 @@ namespace FINAL_BCT_apk
                 studentId_txtbox.ForeColor = Color.DarkGray;
             }
         }
-        private void course_txtbox_Enter(object sender, EventArgs e)
-        {
-            if (course_txtbox.Text == "Enter Course")
-            {
-                course_txtbox.Text = "";
-                course_txtbox.ForeColor = Color.FromArgb(135, 10, 6);
-            }
-        }
-        private void course_txtbox_Leave(object sender, EventArgs e)
-        {
-            if (course_txtbox.Text == "")
-            {
-                course_txtbox.Text = "Enter Course";
-                course_txtbox.ForeColor = Color.DarkGray;
-            }
-        }
         private void yearLv_txtbox_Enter(object sender, EventArgs e)
         {
             if (yearLv_txtbox.Text == "Year Level")
@@ -389,14 +409,15 @@ namespace FINAL_BCT_apk
         {
             string studentId = studentId_txtbox.Text.Trim();
             string fullName = fullName_txtbox.Text.Trim();
-            string course = course_txtbox.Text.Trim();
+            int courseId = courses_comboBox.SelectedValue != null ?
+                   Convert.ToInt32(courses_comboBox.SelectedValue) : 0;
             string password = password_txtbox.Text;
             string confirmPassword = conPassword_txtbox.Text;
 
             //input & placeholder verification-->
             if (fullName_txtbox.Text == "" || fullName_txtbox.Text == "Enter Fullname" ||
                    studentId_txtbox.Text == "" || studentId_txtbox.Text == "Student ID" ||
-                   course_txtbox.Text == "" || course_txtbox.Text == "Enter Course" ||
+                   courseId == 0 ||
                    yearLv_txtbox.Text == "" || yearLv_txtbox.Text == "Year Level" ||
                    password_txtbox.Text == "" || password_txtbox.Text == "Enter Password" ||
                    conPassword_txtbox.Text == "" || conPassword_txtbox.Text == "Confirm Password")
@@ -449,14 +470,14 @@ namespace FINAL_BCT_apk
                 }//<----
 
 
-                string sql = @"INSERT INTO inputs (student_id, full_name, course, year_level, password)
-                             VALUES(@student_id, @full_name, @course, @year_level, @password)";
+                string sql = @"INSERT INTO inputs (student_id, full_name, course_id, year_level, password)
+                             VALUES(@student_id, @full_name, @course_id, @year_level, @password)";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@student_id", studentId);
                     cmd.Parameters.AddWithValue("@full_name", fullName);
-                    cmd.Parameters.AddWithValue("@course", course);
+                    cmd.Parameters.AddWithValue("@course_id", courseId);
                     cmd.Parameters.AddWithValue("@year_level", yearLevel);
                     cmd.Parameters.AddWithValue("@password", password);
                     cmd.ExecuteNonQuery();
