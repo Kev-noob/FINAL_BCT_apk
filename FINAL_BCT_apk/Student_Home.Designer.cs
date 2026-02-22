@@ -43,24 +43,24 @@
             this.profile_btn = new System.Windows.Forms.Button();
             this.home_panel = new System.Windows.Forms.Panel();
             this.userName_label = new System.Windows.Forms.Label();
-            this.profilePic_btn = new System.Windows.Forms.Button();
             this.main_sidePanel = new System.Windows.Forms.Panel();
+            this.Home_label = new System.Windows.Forms.Label();
             this.home_Location_btn = new System.Windows.Forms.Button();
             this.home_About_btn = new System.Windows.Forms.Button();
             this.home_Announcement_btn = new System.Windows.Forms.Button();
             this.home_News_btn = new System.Windows.Forms.Button();
             this.Profile_panel = new System.Windows.Forms.Panel();
-            this.Enroll_panel = new System.Windows.Forms.Panel();
-            this.Home_label = new System.Windows.Forms.Label();
-            this.Courses_panel = new System.Windows.Forms.Panel();
-            this.Grades_panel = new System.Windows.Forms.Panel();
-            this.Billing_panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.MAIN_CONTAINER = new System.Windows.Forms.Panel();
+            this.Enroll_panel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.Courses_panel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.Grades_panel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.Billing_panel = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.MAIN_CONTAINER = new System.Windows.Forms.Panel();
+            this.home_Center = new System.Windows.Forms.Panel();
             this.menuButton_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menu_btn)).BeginInit();
             this.sideBar_container.SuspendLayout();
@@ -72,6 +72,7 @@
             this.Grades_panel.SuspendLayout();
             this.Billing_panel.SuspendLayout();
             this.MAIN_CONTAINER.SuspendLayout();
+            this.home_Center.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebarTimer
@@ -129,7 +130,7 @@
             this.sideBar_container.MaximumSize = new System.Drawing.Size(218, 600);
             this.sideBar_container.MinimumSize = new System.Drawing.Size(68, 600);
             this.sideBar_container.Name = "sideBar_container";
-            this.sideBar_container.Size = new System.Drawing.Size(218, 600);
+            this.sideBar_container.Size = new System.Drawing.Size(68, 600);
             this.sideBar_container.TabIndex = 0;
             // 
             // logout_btn
@@ -282,8 +283,7 @@
             // home_panel
             // 
             this.home_panel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.home_panel.Controls.Add(this.profilePic_btn);
-            this.home_panel.Controls.Add(this.userName_label);
+            this.home_panel.Controls.Add(this.home_Center);
             this.home_panel.Controls.Add(this.main_sidePanel);
             this.home_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.home_panel.Location = new System.Drawing.Point(0, 0);
@@ -295,29 +295,13 @@
             // 
             this.userName_label.AutoSize = true;
             this.userName_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userName_label.Font = new System.Drawing.Font("Noto Sans JP", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.userName_label.Location = new System.Drawing.Point(225, 80);
+            this.userName_label.Font = new System.Drawing.Font("Noto Sans JP", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.userName_label.Location = new System.Drawing.Point(25, 12);
             this.userName_label.Name = "userName_label";
-            this.userName_label.Size = new System.Drawing.Size(305, 102);
+            this.userName_label.Size = new System.Drawing.Size(194, 70);
             this.userName_label.TabIndex = 2;
-            this.userName_label.Text = "Welcome back,\r\n            User Name";
-            this.userName_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // profilePic_btn
-            // 
-            this.profilePic_btn.BackColor = System.Drawing.Color.Black;
-            this.profilePic_btn.BackgroundImage = global::FINAL_BCT_apk.Properties.Resources.profileSAMPLE;
-            this.profilePic_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.profilePic_btn.FlatAppearance.BorderSize = 0;
-            this.profilePic_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.profilePic_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.profilePic_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.profilePic_btn.ForeColor = System.Drawing.Color.Black;
-            this.profilePic_btn.Location = new System.Drawing.Point(499, 158);
-            this.profilePic_btn.Name = "profilePic_btn";
-            this.profilePic_btn.Size = new System.Drawing.Size(102, 84);
-            this.profilePic_btn.TabIndex = 2;
-            this.profilePic_btn.UseVisualStyleBackColor = false;
+            this.userName_label.Text = "Welcome back,\r\nUser Name";
+            this.userName_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // main_sidePanel
             // 
@@ -332,6 +316,18 @@
             this.main_sidePanel.Name = "main_sidePanel";
             this.main_sidePanel.Size = new System.Drawing.Size(150, 600);
             this.main_sidePanel.TabIndex = 0;
+            // 
+            // Home_label
+            // 
+            this.Home_label.AutoSize = true;
+            this.Home_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Home_label.Font = new System.Drawing.Font("Noto Sans JP", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Home_label.Location = new System.Drawing.Point(27, 12);
+            this.Home_label.Name = "Home_label";
+            this.Home_label.Size = new System.Drawing.Size(96, 39);
+            this.Home_label.TabIndex = 3;
+            this.Home_label.Text = "Home";
+            this.Home_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // home_Location_btn
             // 
@@ -415,58 +411,6 @@
             this.Profile_panel.Size = new System.Drawing.Size(832, 600);
             this.Profile_panel.TabIndex = 3;
             // 
-            // Enroll_panel
-            // 
-            this.Enroll_panel.BackColor = System.Drawing.Color.RosyBrown;
-            this.Enroll_panel.Controls.Add(this.label2);
-            this.Enroll_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Enroll_panel.Location = new System.Drawing.Point(0, 0);
-            this.Enroll_panel.Name = "Enroll_panel";
-            this.Enroll_panel.Size = new System.Drawing.Size(832, 600);
-            this.Enroll_panel.TabIndex = 4;
-            // 
-            // Home_label
-            // 
-            this.Home_label.AutoSize = true;
-            this.Home_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Home_label.Font = new System.Drawing.Font("Noto Sans JP", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Home_label.Location = new System.Drawing.Point(6, 3);
-            this.Home_label.Name = "Home_label";
-            this.Home_label.Size = new System.Drawing.Size(131, 54);
-            this.Home_label.TabIndex = 3;
-            this.Home_label.Text = "Home";
-            this.Home_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Courses_panel
-            // 
-            this.Courses_panel.BackColor = System.Drawing.Color.Peru;
-            this.Courses_panel.Controls.Add(this.label3);
-            this.Courses_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Courses_panel.Location = new System.Drawing.Point(0, 0);
-            this.Courses_panel.Name = "Courses_panel";
-            this.Courses_panel.Size = new System.Drawing.Size(832, 600);
-            this.Courses_panel.TabIndex = 5;
-            // 
-            // Grades_panel
-            // 
-            this.Grades_panel.BackColor = System.Drawing.Color.Khaki;
-            this.Grades_panel.Controls.Add(this.label4);
-            this.Grades_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grades_panel.Location = new System.Drawing.Point(0, 0);
-            this.Grades_panel.Name = "Grades_panel";
-            this.Grades_panel.Size = new System.Drawing.Size(832, 600);
-            this.Grades_panel.TabIndex = 6;
-            // 
-            // Billing_panel
-            // 
-            this.Billing_panel.BackColor = System.Drawing.Color.OliveDrab;
-            this.Billing_panel.Controls.Add(this.label5);
-            this.Billing_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Billing_panel.Location = new System.Drawing.Point(0, 0);
-            this.Billing_panel.Name = "Billing_panel";
-            this.Billing_panel.Size = new System.Drawing.Size(832, 600);
-            this.Billing_panel.TabIndex = 7;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -477,18 +421,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Profile";
             // 
-            // MAIN_CONTAINER
+            // Enroll_panel
             // 
-            this.MAIN_CONTAINER.Controls.Add(this.Billing_panel);
-            this.MAIN_CONTAINER.Controls.Add(this.Grades_panel);
-            this.MAIN_CONTAINER.Controls.Add(this.Courses_panel);
-            this.MAIN_CONTAINER.Controls.Add(this.Enroll_panel);
-            this.MAIN_CONTAINER.Controls.Add(this.Profile_panel);
-            this.MAIN_CONTAINER.Controls.Add(this.home_panel);
-            this.MAIN_CONTAINER.Location = new System.Drawing.Point(68, 0);
-            this.MAIN_CONTAINER.Name = "MAIN_CONTAINER";
-            this.MAIN_CONTAINER.Size = new System.Drawing.Size(832, 600);
-            this.MAIN_CONTAINER.TabIndex = 0;
+            this.Enroll_panel.BackColor = System.Drawing.Color.RosyBrown;
+            this.Enroll_panel.Controls.Add(this.label2);
+            this.Enroll_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Enroll_panel.Location = new System.Drawing.Point(0, 0);
+            this.Enroll_panel.Name = "Enroll_panel";
+            this.Enroll_panel.Size = new System.Drawing.Size(832, 600);
+            this.Enroll_panel.TabIndex = 4;
             // 
             // label2
             // 
@@ -500,6 +441,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Enroll";
             // 
+            // Courses_panel
+            // 
+            this.Courses_panel.BackColor = System.Drawing.Color.Peru;
+            this.Courses_panel.Controls.Add(this.label3);
+            this.Courses_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Courses_panel.Location = new System.Drawing.Point(0, 0);
+            this.Courses_panel.Name = "Courses_panel";
+            this.Courses_panel.Size = new System.Drawing.Size(832, 600);
+            this.Courses_panel.TabIndex = 5;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -509,6 +460,16 @@
             this.label3.Size = new System.Drawing.Size(166, 54);
             this.label3.TabIndex = 1;
             this.label3.Text = "Courses";
+            // 
+            // Grades_panel
+            // 
+            this.Grades_panel.BackColor = System.Drawing.Color.Khaki;
+            this.Grades_panel.Controls.Add(this.label4);
+            this.Grades_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grades_panel.Location = new System.Drawing.Point(0, 0);
+            this.Grades_panel.Name = "Grades_panel";
+            this.Grades_panel.Size = new System.Drawing.Size(832, 600);
+            this.Grades_panel.TabIndex = 6;
             // 
             // label4
             // 
@@ -520,6 +481,16 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Grades";
             // 
+            // Billing_panel
+            // 
+            this.Billing_panel.BackColor = System.Drawing.Color.OliveDrab;
+            this.Billing_panel.Controls.Add(this.label5);
+            this.Billing_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Billing_panel.Location = new System.Drawing.Point(0, 0);
+            this.Billing_panel.Name = "Billing_panel";
+            this.Billing_panel.Size = new System.Drawing.Size(832, 600);
+            this.Billing_panel.TabIndex = 7;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -529,6 +500,28 @@
             this.label5.Size = new System.Drawing.Size(140, 54);
             this.label5.TabIndex = 1;
             this.label5.Text = "Billing";
+            // 
+            // MAIN_CONTAINER
+            // 
+            this.MAIN_CONTAINER.Controls.Add(this.home_panel);
+            this.MAIN_CONTAINER.Controls.Add(this.Billing_panel);
+            this.MAIN_CONTAINER.Controls.Add(this.Grades_panel);
+            this.MAIN_CONTAINER.Controls.Add(this.Courses_panel);
+            this.MAIN_CONTAINER.Controls.Add(this.Enroll_panel);
+            this.MAIN_CONTAINER.Controls.Add(this.Profile_panel);
+            this.MAIN_CONTAINER.Location = new System.Drawing.Point(68, 0);
+            this.MAIN_CONTAINER.Name = "MAIN_CONTAINER";
+            this.MAIN_CONTAINER.Size = new System.Drawing.Size(832, 600);
+            this.MAIN_CONTAINER.TabIndex = 0;
+            // 
+            // home_Center
+            // 
+            this.home_Center.Controls.Add(this.userName_label);
+            this.home_Center.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.home_Center.Location = new System.Drawing.Point(150, 0);
+            this.home_Center.Name = "home_Center";
+            this.home_Center.Size = new System.Drawing.Size(682, 600);
+            this.home_Center.TabIndex = 3;
             // 
             // Student_Home
             // 
@@ -547,7 +540,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.menu_btn)).EndInit();
             this.sideBar_container.ResumeLayout(false);
             this.home_panel.ResumeLayout(false);
-            this.home_panel.PerformLayout();
             this.main_sidePanel.ResumeLayout(false);
             this.main_sidePanel.PerformLayout();
             this.Profile_panel.ResumeLayout(false);
@@ -561,6 +553,8 @@
             this.Billing_panel.ResumeLayout(false);
             this.Billing_panel.PerformLayout();
             this.MAIN_CONTAINER.ResumeLayout(false);
+            this.home_Center.ResumeLayout(false);
+            this.home_Center.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -580,7 +574,6 @@
         private System.Windows.Forms.Button logout_btn;
         private System.Windows.Forms.Panel main_sidePanel;
         private System.Windows.Forms.Panel home_panel;
-        private System.Windows.Forms.Button profilePic_btn;
         private System.Windows.Forms.Label userName_label;
         private System.Windows.Forms.Button home_News_btn;
         private System.Windows.Forms.Button home_Location_btn;
@@ -598,5 +591,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel home_Center;
     }
 }

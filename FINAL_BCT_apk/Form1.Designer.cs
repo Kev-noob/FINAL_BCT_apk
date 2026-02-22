@@ -41,13 +41,14 @@
             this.panel_switch_btn_register = new System.Windows.Forms.Button();
             this.register_panel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.courses_comboBox = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.conPass_eyeBtn = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.enterPass_eyeBtn = new System.Windows.Forms.Button();
             this.conPassword_txtbox = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.password_txtbox = new System.Windows.Forms.TextBox();
             this.yearLv_txtbox = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -58,7 +59,6 @@
             this.panel_switch_btn_logIn = new System.Windows.Forms.Button();
             this.minimize2_btn = new System.Windows.Forms.Button();
             this.close2_btn = new System.Windows.Forms.Button();
-            this.courses_comboBox = new System.Windows.Forms.ComboBox();
             this.login_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.register_panel.SuspendLayout();
@@ -78,7 +78,6 @@
             this.login_panel.Name = "login_panel";
             this.login_panel.Size = new System.Drawing.Size(900, 600);
             this.login_panel.TabIndex = 0;
-            this.login_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.login_panel_Paint);
             // 
             // panel1
             // 
@@ -89,9 +88,9 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.btn_login);
             this.panel1.Controls.Add(this.login_ID_txtbox);
-            this.panel1.Location = new System.Drawing.Point(419, 113);
+            this.panel1.Location = new System.Drawing.Point(422, 118);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(393, 361);
+            this.panel1.Size = new System.Drawing.Size(403, 383);
             this.panel1.TabIndex = 5;
             // 
             // panel2
@@ -249,10 +248,29 @@
             this.panel3.Controls.Add(this.panel10);
             this.panel3.Controls.Add(this.fullName_txtbox);
             this.panel3.Controls.Add(this.studentId_txtbox);
-            this.panel3.Location = new System.Drawing.Point(419, 40);
+            this.panel3.Location = new System.Drawing.Point(425, 40);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(406, 478);
+            this.panel3.Size = new System.Drawing.Size(415, 513);
             this.panel3.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel5.Location = new System.Drawing.Point(46, 204);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(320, 2);
+            this.panel5.TabIndex = 21;
+            // 
+            // courses_comboBox
+            // 
+            this.courses_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.courses_comboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.courses_comboBox.FormattingEnabled = true;
+            this.courses_comboBox.Location = new System.Drawing.Point(46, 178);
+            this.courses_comboBox.Name = "courses_comboBox";
+            this.courses_comboBox.Size = new System.Drawing.Size(320, 28);
+            this.courses_comboBox.TabIndex = 8;
+            this.courses_comboBox.Text = "Select Course";
             // 
             // panel7
             // 
@@ -329,14 +347,6 @@
             this.panel6.Size = new System.Drawing.Size(320, 2);
             this.panel6.TabIndex = 22;
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel5.Location = new System.Drawing.Point(46, 204);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(320, 2);
-            this.panel5.TabIndex = 21;
-            // 
             // password_txtbox
             // 
             this.password_txtbox.BackColor = System.Drawing.Color.White;
@@ -382,7 +392,7 @@
             this.btn_reg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reg.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_reg.ForeColor = System.Drawing.Color.White;
-            this.btn_reg.Location = new System.Drawing.Point(129, 420);
+            this.btn_reg.Location = new System.Drawing.Point(126, 438);
             this.btn_reg.Name = "btn_reg";
             this.btn_reg.Size = new System.Drawing.Size(146, 41);
             this.btn_reg.TabIndex = 8;
@@ -474,24 +484,13 @@
             this.close2_btn.UseVisualStyleBackColor = false;
             this.close2_btn.Click += new System.EventHandler(this.close2_btn_Click);
             // 
-            // courses_comboBox
-            // 
-            this.courses_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.courses_comboBox.ForeColor = System.Drawing.Color.DimGray;
-            this.courses_comboBox.FormattingEnabled = true;
-            this.courses_comboBox.Location = new System.Drawing.Point(46, 178);
-            this.courses_comboBox.Name = "courses_comboBox";
-            this.courses_comboBox.Size = new System.Drawing.Size(320, 28);
-            this.courses_comboBox.TabIndex = 8;
-            this.courses_comboBox.Text = "Select Course";
-            // 
             // login_signin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 600);
-            this.Controls.Add(this.register_panel);
             this.Controls.Add(this.login_panel);
+            this.Controls.Add(this.register_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "login_signin_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FINAL_BCT_apk.DAL;
+using FINAL_BCT_apk.Models;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using MySql.Data.MySqlClient;
+using FINAL_BCT_apk.DAL;
+using FINAL_BCT_apk.Models;
 
 namespace FINAL_BCT_apk
 {
@@ -21,16 +26,8 @@ namespace FINAL_BCT_apk
             
         }
 
-        //DATABASE CONNECTION--->
-        private MySqlConnection GetConnection()
-        {
-            string connStr = "server=localhost;" +
-                             "port=3306;" +
-                             "database=BCT_db;" +
-                             "user=root;" +
-                             "password=root;";
-            return new MySqlConnection(connStr);
-        }//<----
+        //CALL THE DATABASE CONNECTION FOLDER (DBHELPER)
+        DBHelper dbHelper = new DBHelper();
 
 
         //BUTTON CORNERS METHOD-->
@@ -68,6 +65,7 @@ namespace FINAL_BCT_apk
             RoundButton(btn_reg, 5);
 
             //COMBOBOX COURSE ITEMS
+            courses_comboBox.ForeColor = Color.DarkGray;
             LoadCourses();
         }
 
@@ -75,35 +73,22 @@ namespace FINAL_BCT_apk
         //LOAD COURSES (FROM SUPER ADMIN) TO COMBOBOX (STUDENT REGISTER)
         private void LoadCourses()
         {
+            //CALL THE DBHELPER FOLDER TO GET COURSES-->
             try
             {
-                using (MySqlConnection conn = GetConnection())
-                {
-                    conn.Open();
-                    string sql = "SELECT id, course_name FROM courses ORDER BY course_name";
-                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                    {
-                        DataTable dt = new DataTable();
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                        adapter.Fill(dt);
-
-                        courses_comboBox.DataSource = dt;
-                        courses_comboBox.DisplayMember = "course_name";  // What user sees
-                        courses_comboBox.ValueMember = "id";             // What gets saved
-
-                        // Add default option
-                        DataRow row = dt.NewRow();
-                        row["id"] = 0;
-                        row["course_name"] = "-- Select Course --";
-                        dt.Rows.InsertAt(row, 0);
-                        courses_comboBox.SelectedIndex = 0;
-                    }
-                }
+                List<Courses> courseList = DBHelper.GetCourse();
+                courseList.Insert(0, new Courses { Id = 0, Course_name = "Select Course" }); 
+                courses_comboBox.DataSource = courseList;
+                courses_comboBox.DisplayMember = "Course_name"; 
+                courses_comboBox.ValueMember = "Id";
+                courses_comboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading courses: " + ex.Message);
-            }
+            }//<--
+           
+            
         }
 
 
@@ -203,70 +188,44 @@ namespace FINAL_BCT_apk
             string studentId = login_ID_txtbox.Text.Trim();
             string password = login_password_txtbox.Text;
 
-            
+            //ADMIN LOGIN CHECKER
+            if (login_ID_txtbox.Text == "admin" && login_password_txtbox.Text == "admin")
+            {
+                //ADMIN LOGIN
+                Teacher_form teacherForm = new Teacher_form();
+                this.Hide();
+                teacherForm.Show();
+                MessageBox.Show("<--You have entered an Admin Domain.-->");
+                return;
+            }
+
             //CHECK FOR EMPTY TEXTBOX---->
             if (studentId == "" || studentId == "Student ID" ||
                 password == "" || password == "Enter Password")
             {
                 MessageBox.Show("Please complete inputs!");
                 return;
-            }//<----
+            }
 
-
+            
+            //ACCES THE BDHELPER FOLDER
             try
             {
-                using (MySqlConnection conn = GetConnection())
-                {
-                    conn.Open();
-                    string sql = "SELECT student_id, full_name, password FROM inputs WHERE student_id=@student_id AND password=@password";
-                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@student_id", studentId);
-                        cmd.Parameters.AddWithValue("@password", password);
-
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                string id = reader.GetString("student_id");
-                                string name = reader.GetString("full_name");
-
-
-                                //GO TO HOME SCREEN
-                                Student_Home loginForm = new Student_Home();
-                                loginForm.Name = name;
-                                this.Hide();
-                                loginForm.Show();
-                            }
-                            else if (studentId == "admin" && password == "admin")
-                            {
-                                //ADMIN LOGIN
-                                Teacher_form teacherForm = new Teacher_form();
-                                this.Hide();
-                                teacherForm.Show();
-                                MessageBox.Show("<--You have entered an Admin Domain.-->");
-                            }
-                            else if (studentId == "admin" && password == "superadmin")
-                            {
-                                //SUPER ADMIN LOGIN
-                                Super_admin superForm = new Super_admin();
-                                this.Hide();
-                                superForm.Show();
-                                MessageBox.Show("<--Welcome Super Admin-->.");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Invalid Student ID or Password!");
-                            }
-                        }
-                    }
-                }
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Database error: " + ex.Message);
-            }
+                Student student = DBHelper.GetStudent(studentId, password);
+               
+                   if (student != null)
+                   {
+                    //GO TO HOME SCREEN
+                    Student_Home loginForm = new Student_Home();
+                    loginForm.currentStudent = student;
+                    this.Hide();
+                    loginForm.Show();
+                   }      
+                   else
+                   {
+                     MessageBox.Show("Invalid Student ID or Password!");
+                   }
+            }//<--
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
@@ -274,15 +233,7 @@ namespace FINAL_BCT_apk
         }
 
 
-
-
-
-
-        //------------------------------BOUNDRY OF LOGIN AND REGISTER PANEL------------------------------//
-
-
-
-
+        //------------------------------------------------------------BOUNDRY OF LOGIN AND REGISTER PANEL------------------------------------------------------------------//
 
 
         //TEXTBOX PLACEHOLDER (REGISTER PANEL)
@@ -450,46 +401,28 @@ namespace FINAL_BCT_apk
             }//<---
 
 
-
-            //INSERT TO DATABASE--->
-            using (MySqlConnection conn = GetConnection())
+            //CALL THE DBHELPER FOLDER TO ADD STUDENT TO DATABASE -->
+            Student InserStudent = new Student
             {
-                conn.Open();
-
-                //ID UNIQUENESS CHEKER--->
-                string checkSql = "SELECT COUNT(*) FROM inputs WHERE student_id = @studentId";
-                using (MySqlCommand checkCmd = new MySqlCommand(checkSql, conn))
-                {
-                    checkCmd.Parameters.AddWithValue("@studentId", studentId);
-                    int count = Convert.ToInt32(checkCmd.ExecuteScalar());
-                    if (count > 0)
-                    {
-                        MessageBox.Show("Student ID already exists!");
-                        return;
-                    }
-                }//<----
+                Student_id = studentId,
+                Full_name = fullName,
+                Course_id = courseId.ToString(),
+                Year_level = yearLevel,
+                Password = password
+            };
+            bool isInserted = DBHelper.AddStudent(InserStudent);
+            //<--
 
 
-                string sql = @"INSERT INTO inputs (student_id, full_name, course_id, year_level, password)
-                             VALUES(@student_id, @full_name, @course_id, @year_level, @password)";
+            if (isInserted)
+            {
+                MessageBox.Show("<-Registered Succesfully->");
+            }
+            else
+            {
+                MessageBox.Show("ID already exist!");
+            }
 
-                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                {
-                    cmd.Parameters.AddWithValue("@student_id", studentId);
-                    cmd.Parameters.AddWithValue("@full_name", fullName);
-                    cmd.Parameters.AddWithValue("@course_id", courseId);
-                    cmd.Parameters.AddWithValue("@year_level", yearLevel);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    cmd.ExecuteNonQuery();
-                }
-
-            }//<----
-            MessageBox.Show("<-Registered Succesfully->");
-        }
-
-        private void login_panel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        } 
     }
 }

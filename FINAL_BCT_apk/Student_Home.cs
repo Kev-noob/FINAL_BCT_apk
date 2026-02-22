@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FINAL_BCT_apk.DAL;
+using FINAL_BCT_apk.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +17,7 @@ namespace FINAL_BCT_apk
     public partial class Student_Home : Form
     {
         //GET AND SET VALUES FROM DATABASE
-        public string Name { get; set; }
+        public Student currentStudent { get; set; }
 
         //COLOR VARIABLE (RED)
         private readonly Color textColor = ColorTranslator.FromHtml("#ECE1D5");
@@ -52,13 +54,8 @@ namespace FINAL_BCT_apk
             this.Region = new Region(path);
 
             //SET NAME FROM DATABASE
-            userName_label.Text = $"Welcome back, {Name}";
+            userName_label.Text = $"Welcome back, {currentStudent.Full_name}";
             userName_label.ForeColor = ColorTranslator.FromHtml("#9A1E22");
-
-
-            //CIRCULAR BUTTON
-            MakeButtonCircular(profilePic_btn);
-            
 
 
             //MENU TEXT COLORS
@@ -187,9 +184,5 @@ namespace FINAL_BCT_apk
             await Task.Delay(150);
             Billing_panel.BringToFront();
         }
-
-     
-
-       
     }
 }
