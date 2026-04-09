@@ -96,13 +96,20 @@ namespace FINAL_BCT_apk
         private void panel_switch_btn_register_Click(object sender, EventArgs e)
         {
             register_panel.BringToFront();
+            student_reg.BringToFront();
         }
         private void panel_switch_btn_logIn_Click(object sender, EventArgs e)
         {
             login_panel.BringToFront();
         }
-
-
+        private void BIG_reg_Click(object sender, EventArgs e)
+        {
+            student_reg.BringToFront();  
+        }
+        private void BIG_student_reg_Click(object sender, EventArgs e)
+        {
+            student_login.BringToFront();
+        }
 
         //MINIMIZE AND CLOSE BUTTONS
         private void button1_Click(object sender, EventArgs e)
@@ -423,6 +430,207 @@ namespace FINAL_BCT_apk
                 MessageBox.Show("ID already exist!");
             }
 
-        } 
+        }
+        //------------------------------------------------------------BOUNDRY OF REGISTER AND INSTRUCTOR PANEL------------------------------------------------------------------//
+
+
+        private void instructor_reg_Click(object sender, EventArgs e)
+        {
+            instructor_register.BringToFront();
+        }
+
+        private void instructor_login_Click(object sender, EventArgs e)
+        {
+            instructor_login_.BringToFront();
+        }
+
+
+        //TEXTBOX PLACEHOLDER (REGISTER INSTRUCTOR PANEL)
+        private void INS_name_Enter(object sender, EventArgs e)
+        {
+            if (INS_name.Text == "Enter Fullname")
+            {
+                INS_name.Text = "";
+                INS_name.ForeColor = Color.FromArgb(135, 10, 6);
+            }
+        }
+        private void INS_name_Leave(object sender, EventArgs e)
+        {
+            if (INS_name.Text == "")
+            {
+                INS_name.Text = "Enter Fullname";
+                INS_name.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void INS_email_Enter(object sender, EventArgs e)
+        {
+            if (INS_email.Text == "Email")
+            {
+                INS_email.Text = "";
+                INS_email.ForeColor = Color.FromArgb(135, 10, 6);
+            }
+        }
+        private void INS_email_Leave(object sender, EventArgs e)
+        {
+            if (INS_email.Text == "")
+            {
+                INS_email.Text = "Email";
+                INS_email.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void INS_phone_Enter(object sender, EventArgs e)
+        {
+            if (INS_phone.Text == "Phone")
+            {
+                INS_phone.Text = "";
+                INS_phone.ForeColor = Color.FromArgb(135, 10, 6);
+            }
+        }
+        private void INS_phone_Leave(object sender, EventArgs e)
+        {
+            if (INS_phone.Text == "")
+            {
+                INS_phone.Text = "Phone";
+                INS_phone.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void INS_department_Enter(object sender, EventArgs e)
+        {
+            if (INS_department.Text == "Department")
+            {
+                INS_department.Text = "";
+                INS_department.ForeColor = Color.FromArgb(135, 10, 6);
+            }
+        }
+        private void INS_department_Leave(object sender, EventArgs e)
+        {
+            if (INS_department.Text == "")
+            {
+                INS_department.Text = "Department";
+                INS_department.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void INS_pass_Enter(object sender, EventArgs e)
+        {
+            if (INS_pass.Text == "Enter Password")
+            {
+                INS_pass.Text = "";
+                INS_pass.ForeColor = Color.FromArgb(135, 10, 6);
+                INS_pass.PasswordChar = '•';
+            }
+        }
+        private void INS_pass_Leave(object sender, EventArgs e)
+        {
+            if (INS_pass.Text == "")
+            {
+                INS_pass.PasswordChar = '\0';
+                INS_pass.Text = "Enter Password";
+                INS_pass.ForeColor = Color.DarkGray;
+              
+            }
+        }
+
+        private void INS_cnfrm_pass_Enter(object sender, EventArgs e)
+        {
+            if (INS_cnfrm_pass.Text == "Confirm Password")
+            {
+                INS_cnfrm_pass.Text = "";
+                INS_cnfrm_pass.ForeColor = Color.FromArgb(135, 10, 6);
+                INS_cnfrm_pass.PasswordChar = '•';
+            }
+        }
+        private void INS_cnfrm_pass_Leave(object sender, EventArgs e)
+        {
+            if (INS_cnfrm_pass.Text == "")
+            {
+                INS_cnfrm_pass.PasswordChar = '\0';
+                INS_cnfrm_pass.Text = "Confirm Password";
+                INS_cnfrm_pass.ForeColor = Color.DarkGray;
+                
+            }
+        }
+
+
+        //SHOW & HIDE PASSWORD (REGISTER PANEL)
+        private void enterPass_eye_Click(object sender, EventArgs e)
+        {
+            if (INS_pass.PasswordChar == '•')
+            {
+                INS_pass.PasswordChar = '\0';
+                enterPass_eye.Image = Properties.Resources.open_eye;
+            }
+            else
+            {
+                INS_pass.PasswordChar = '•';
+                enterPass_eye.Image = Properties.Resources.eye_22;
+            }
+        }
+        private void conPass_eye_Click(object sender, EventArgs e)
+        {
+            if (INS_cnfrm_pass.PasswordChar == '•')
+            {
+                INS_cnfrm_pass.PasswordChar = '\0';
+                conPass_eye.Image = Properties.Resources.open_eye;
+            }
+            else
+            {
+                INS_cnfrm_pass.PasswordChar = '•';
+                conPass_eye.Image = Properties.Resources.eye_22;
+            }
+        }
+
+
+        //REGISTER BUTTON (INSTRUCTOR)
+        private void INS_signUp_Click(object sender, EventArgs e)
+        {
+            string Ins_name = INS_name.Text.Trim();
+            string Ins_email = INS_email.Text.Trim();
+            string Ins_phone = INS_phone.Text.Trim();
+            string Ins_department = INS_department.Text.Trim();
+            
+            string password = INS_pass.Text;
+            string confirmPassword = INS_cnfrm_pass.Text;
+
+            //input & placeholder verification-->
+            if (INS_name.Text == "" || INS_name.Text == "Enter Fullname" ||
+                   INS_email.Text == "" || INS_email.Text == "Email" ||
+                   INS_phone.Text == "" || INS_phone.Text == "Phone" ||
+                   INS_department.Text == "" || INS_department.Text == "Department" ||
+
+                   INS_pass.Text == "" || INS_pass.Text == "Enter Password" ||
+                   INS_cnfrm_pass.Text == "" || INS_cnfrm_pass.Text == "Confirm Password")
+            {
+                MessageBox.Show("Please complete inputs!");
+                return;
+            }//<--
+
+
+            //PASSWORD CHECKER-->
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("PasswordS does not match!");
+                return;
+            }//<---
+
+
+
+            Instructor instructor = new Instructor
+            {
+                FullName = INS_name.Text.Trim(),
+                Email = INS_email.Text.Trim(),
+                Phone = INS_phone.Text.Trim(),
+                Department = INS_department.Text.Trim(),
+                Password = INS_pass.Text.Trim()
+            };
+
+          DBHelper.PendingINS(instructor);
+
+
+           
+        }
     }
 }

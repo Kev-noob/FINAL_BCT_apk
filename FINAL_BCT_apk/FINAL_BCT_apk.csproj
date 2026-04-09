@@ -109,6 +109,7 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Courses.cs" />
+    <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Proffersor_form.cs">
       <SubType>Form</SubType>

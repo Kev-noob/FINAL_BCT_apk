@@ -42,6 +42,7 @@
             this.home_btn = new System.Windows.Forms.Button();
             this.profile_btn = new System.Windows.Forms.Button();
             this.home_panel = new System.Windows.Forms.Panel();
+            this.home_Center = new System.Windows.Forms.Panel();
             this.userName_label = new System.Windows.Forms.Label();
             this.main_sidePanel = new System.Windows.Forms.Panel();
             this.Home_label = new System.Windows.Forms.Label();
@@ -60,11 +61,11 @@
             this.Billing_panel = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.MAIN_CONTAINER = new System.Windows.Forms.Panel();
-            this.home_Center = new System.Windows.Forms.Panel();
             this.menuButton_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menu_btn)).BeginInit();
             this.sideBar_container.SuspendLayout();
             this.home_panel.SuspendLayout();
+            this.home_Center.SuspendLayout();
             this.main_sidePanel.SuspendLayout();
             this.Profile_panel.SuspendLayout();
             this.Enroll_panel.SuspendLayout();
@@ -72,7 +73,6 @@
             this.Grades_panel.SuspendLayout();
             this.Billing_panel.SuspendLayout();
             this.MAIN_CONTAINER.SuspendLayout();
-            this.home_Center.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebarTimer
@@ -130,7 +130,7 @@
             this.sideBar_container.MaximumSize = new System.Drawing.Size(218, 600);
             this.sideBar_container.MinimumSize = new System.Drawing.Size(68, 600);
             this.sideBar_container.Name = "sideBar_container";
-            this.sideBar_container.Size = new System.Drawing.Size(68, 600);
+            this.sideBar_container.Size = new System.Drawing.Size(218, 600);
             this.sideBar_container.TabIndex = 0;
             // 
             // logout_btn
@@ -290,6 +290,15 @@
             this.home_panel.Name = "home_panel";
             this.home_panel.Size = new System.Drawing.Size(832, 600);
             this.home_panel.TabIndex = 1;
+            // 
+            // home_Center
+            // 
+            this.home_Center.Controls.Add(this.userName_label);
+            this.home_Center.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.home_Center.Location = new System.Drawing.Point(150, 0);
+            this.home_Center.Name = "home_Center";
+            this.home_Center.Size = new System.Drawing.Size(682, 600);
+            this.home_Center.TabIndex = 3;
             // 
             // userName_label
             // 
@@ -514,15 +523,6 @@
             this.MAIN_CONTAINER.Size = new System.Drawing.Size(832, 600);
             this.MAIN_CONTAINER.TabIndex = 0;
             // 
-            // home_Center
-            // 
-            this.home_Center.Controls.Add(this.userName_label);
-            this.home_Center.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.home_Center.Location = new System.Drawing.Point(150, 0);
-            this.home_Center.Name = "home_Center";
-            this.home_Center.Size = new System.Drawing.Size(682, 600);
-            this.home_Center.TabIndex = 3;
-            // 
             // Student_Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -540,6 +540,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.menu_btn)).EndInit();
             this.sideBar_container.ResumeLayout(false);
             this.home_panel.ResumeLayout(false);
+            this.home_Center.ResumeLayout(false);
+            this.home_Center.PerformLayout();
             this.main_sidePanel.ResumeLayout(false);
             this.main_sidePanel.PerformLayout();
             this.Profile_panel.ResumeLayout(false);
@@ -553,8 +555,6 @@
             this.Billing_panel.ResumeLayout(false);
             this.Billing_panel.PerformLayout();
             this.MAIN_CONTAINER.ResumeLayout(false);
-            this.home_Center.ResumeLayout(false);
-            this.home_Center.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -89,7 +89,7 @@ namespace FINAL_BCT_apk
 
             
         }
-
+        
         //AVOID FICKERING WHILE SLIDING THE MENU
         private void SetDoubleBuffered(Control c)
         {
