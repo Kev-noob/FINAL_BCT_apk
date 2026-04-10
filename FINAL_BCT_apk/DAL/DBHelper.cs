@@ -131,7 +131,7 @@ namespace FINAL_BCT_apk.DAL
             {
                 using (MySqlConnection conn = GetConnection())
                 {
-                    string query = @"INSERT INTO PendingInstructor (FullName, Email, Phone, Department, Password) 
+                    string query = @"INSERT INTO pendinginstructor (FullName, Email, Phone, Department, Password) 
                              VALUES (@name, @email, @phone, @department, @password)";
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
